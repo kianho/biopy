@@ -147,11 +147,18 @@ pseaac_scales, pseaac_scale_ids = file_io.read_scales(AA_SCALE_PSEAAC_F)
 
 
 # TODO index_id? descr?
-def get_aaindex_scale(index, ambiguous=True, standardized=True):
-    '''
-    If standardize, values (of the unambiguous amino acids) are standardized
+def get_aaindex_scale(aaindex_id, ambiguous=False, standardized=True):
+    '''If standardize, values (of the unambiguous amino acids) are standardized
     to mean 0.0 and standard deviation 1.0.
+
+    Arguments:
+        aaindex_id --
+
     '''
+
+    # assume that an AAindex (e.g. "VINM940101") is given.
+    index = aaindex_scale_ids.index(aaindex_id)
+
     if(standardized):
         scale = aaindex_st_scales[index].copy()
     else:
